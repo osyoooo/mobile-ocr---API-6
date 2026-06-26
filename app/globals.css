@@ -366,9 +366,7 @@ h2 {
 }
 
 .total-card {
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
+  position: static;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -376,7 +374,6 @@ h2 {
   padding: 14px;
   background: rgba(230, 255, 250, 0.96);
   border-top: 2px solid #99f6e4;
-  backdrop-filter: blur(14px);
 }
 
 .total-card div {
@@ -414,9 +411,9 @@ h2 {
 
 .payment-row {
   display: grid;
-  grid-template-columns: 1fr minmax(124px, 0.56fr);
+  grid-template-columns: minmax(94px, 0.86fr) minmax(152px, 1.14fr);
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   min-height: 54px;
   border: 1px solid #c7eef4;
@@ -435,10 +432,12 @@ h2 {
 .payment-row strong,
 .voucher-select {
   width: 100%;
-  font-size: clamp(24px, 7vw, 38px);
+  font-size: clamp(22px, 6vw, 34px);
   font-weight: 900;
   text-align: right;
   color: var(--primary-dark);
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .negative-value,
@@ -446,13 +445,37 @@ h2 {
   color: #e11d1d;
 }
 
+.voucher-select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border-radius: 12px;
+  background: #fff7f7;
+}
+
+.voucher-select-wrap::after {
+  content: '⌄';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-54%);
+  color: #e11d1d;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .voucher-select {
   min-height: 48px;
-  appearance: auto;
+  appearance: none;
+  -webkit-appearance: none;
   border: 0;
   border-radius: 12px;
-  padding: 4px 10px;
-  background: #fff7f7;
+  padding: 4px 40px 4px 8px;
+  background: transparent;
+  text-align-last: right;
 }
 
 .voucher-select:focus {
@@ -492,5 +515,28 @@ h2 {
   .total-card {
     margin-left: -20px;
     margin-right: -20px;
+  }
+
+  .payment-row {
+    grid-template-columns: minmax(88px, 0.8fr) minmax(148px, 1.2fr);
+    padding: 8px;
+  }
+
+  .payment-row span {
+    font-size: clamp(17px, 5vw, 23px);
+  }
+
+  .payment-row strong,
+  .voucher-select {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .voucher-select {
+    padding-right: 36px;
+  }
+
+  .voucher-select-wrap::after {
+    right: 10px;
+    font-size: 22px;
   }
 }
