@@ -37,18 +37,20 @@ export function ResultSummary({ totalQuantity, totalAmount }: ResultSummaryProps
 
         <label className="payment-row voucher-row">
           <span>優待券</span>
-          <select
-            className="voucher-select"
-            value={voucherAmount}
-            onChange={(event) => setVoucherAmount(Number(event.currentTarget.value))}
-            aria-label="優待券金額"
-          >
-            {VOUCHER_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {formatSignedNumber(option)}円
-              </option>
-            ))}
-          </select>
+          <span className="voucher-select-wrap">
+            <select
+              className="voucher-select"
+              value={voucherAmount}
+              onChange={(event) => setVoucherAmount(Number(event.currentTarget.value))}
+              aria-label="優待券金額"
+            >
+              {VOUCHER_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {formatSignedNumber(option)}
+                </option>
+              ))}
+            </select>
+          </span>
         </label>
 
         <p className="payment-row payable-row">
